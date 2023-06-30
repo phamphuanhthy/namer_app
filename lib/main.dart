@@ -14,7 +14,7 @@ import 'src/navigation_controls.dart';
 
 Future<Album> fetchAlbum() async {
   final response = await http.get(Uri.parse(
-      'http://103.161.113.136:3000/selectdb/SELECT%20idshipper,%20tenshipper,username%20FROM%20public.shipper'));
+      'https://logi-path.com/nodejs/selectdb/SELECT * FROM public.shipper'));
 
   if (response.statusCode == 200) {
     // If the server did return a 200 OK response,
@@ -289,7 +289,7 @@ class GeneratorPage extends StatelessWidget {
                   appState.toggleFavorite();
                 },
                 icon: Icon(icon),
-                label: Text('Like'),
+                label: Text('Like...'),
               ),
               SizedBox(width: 10),
               ElevatedButton(
@@ -334,6 +334,7 @@ class GeneratorPage1 extends StatelessWidget {
             child:
                 Column(mainAxisAlignment: MainAxisAlignment.center, children: [
           Row(children: [
+            Image.asset('assets/images/phongchong.png'),
             ElevatedButton.icon(
               onPressed: () {
                 appState.toggleFavorite();
@@ -368,7 +369,8 @@ class GeneratorPage1 extends StatelessWidget {
               label: Text('unLike'),
             ),
           ]),
-        ])));
+        ]))
+    );
   }
 }
 
@@ -532,7 +534,7 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   String appBarTitle = "Title1";
 
-  final List<String> titles = ["Home", "P1", "P2", "P3"];
+  final List<String> titles = ["Home", "Pg1", "Pg2", "Pg3"];
 
   void changeTitle(int id) {
     setState(() {
@@ -548,10 +550,11 @@ class _HomeScreenState extends State<HomeScreen> {
         color: Colors.yellow.shade100,
         alignment: Alignment.center,
         child: Center(
+
             child: ElevatedButton(
-          child: Text("Open FlutterCampus.com"),
+          child: Text("Open Web Page"),
           onPressed: () async {
-            Uri url = Uri.https("google.com");
+            Uri url = Uri.https("logi-path.com");
             //url.
             //String url = "https://www.fluttercampus.com";
             var urllaunchable = await canLaunchUrl(
@@ -569,11 +572,43 @@ class _HomeScreenState extends State<HomeScreen> {
     Container(
       color: Colors.purple.shade100,
       alignment: Alignment.center,
-      child: const Text(
-        'Feed',
-        style: TextStyle(fontSize: 40),
+       child: Column(
+          children: const [
+
+
+            Text("Avatar"),
+
+            SizedBox(
+              height: 50,
+            ),
+            CircleAvatar(
+              radius: 20,
+              child: Icon(Icons.person),
+            ),
+            SizedBox(
+              height: 50,
+            ),
+            CircleAvatar(
+              radius: 30,
+              child: Icon(Icons.person),
+            ),
+
+            SizedBox(
+              height: 50,
+            ),
+            CircleAvatar(
+              radius: 60,
+              child: Icon(Icons.person),
+            ),
+         Image(image: AssetImage('assets/images/phongchong.png')),
+
+          ],
+        ),
+
+
+
       ),
-    ),
+
     // Content for Favorites tab
     Container(
       color: Colors.red.shade100,
@@ -581,6 +616,8 @@ class _HomeScreenState extends State<HomeScreen> {
       child: const Text(
         'Favorites',
         style: TextStyle(fontSize: 40),
+
+
       ),
     ),
     // Content for Settings tab
@@ -588,7 +625,7 @@ class _HomeScreenState extends State<HomeScreen> {
       color: Colors.pink.shade300,
       alignment: Alignment.center,
       child: const Text(
-        'Settings',
+        'Settings 123',
         style: TextStyle(fontSize: 40),
       ),
     )
